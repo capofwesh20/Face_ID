@@ -1,4 +1,15 @@
-# Face_ID
+# Building a Facial Identity Recognition System
+
+Steps taken:
+
+* finding pretrained image embedding models and using them on our own data 👾
+* building an image dataset and uploading it to the Hugging Face Hub 📖
+* measuring the performance of an image embedding model on test data and the real world 📈
+* building a facial identity recognition app you can run on your phone or laptop 📷
+
+
+
+# Introduction
 
 [Face ID](https://en.wikipedia.org/wiki/Face_ID) was introduced by Apple in 2017 as an alternative to fingerprint-based authentication for iPhones. The way that Face ID works is that it uses infrared projectors that shine around 30,000 infrared dots onto a user's face. Then an infrared camera reads the reflections to come up with an infrared "image" of a person's face. Using neural networks, Face ID predicts if the recorded infrared image is similar enough to a stored profile, in which case the phone unlocks.
 
