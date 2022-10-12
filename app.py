@@ -58,20 +58,46 @@ def predict(im1, im2):
 
 
 
+import gradio as gr
+
+
 title = 'Face ID'
 description = 'This model detects the similarity between two images and passes a command!'
-interface = gr.Interface(fn=predict, 
-                         inputs= [gr.Image(type="pil", source="webcam"), 
-                                  gr.Image(type="pil", source="webcam")], 
-                         outputs= [gr.Number(label="Similarity"),
-                                   gr.Textbox(label="Message")],
-                         title = title,
-                         description = description
-                         )
+
+
+article = """
+            Upload and Image from your Device or Make use of your webcam 
+          """
+
+img_upload = gr.Interface(
+    fn=predict, 
+    inputs= [gr.Image(type="pil", source="upload"), 
+             gr.Image(type="pil", source="upload")], 
+    outputs= [gr.Number(label="Similarity"),
+              gr.Textbox(label="Message")],
+    title=title,
+    description=description,
+    article=article
+    )
+
+webcam_upload = gr.Interface(
+    fn=predict, 
+    inputs= [gr.Image(type="pil", source="webcam"), 
+            gr.Image(type="pil", source="webcam")], 
+    outputs= [gr.Number(label="Similarity"),
+              gr.Textbox(label="Message")],
+    title=title,
+    description=description,
+    article=article,
+    )
+
+face_id = gr.TabbedInterface(
+    [img_upload, webcam_upload], 
+    ["Upload-Image", "Use Webcam"])
+
+face_id.launch(debug=True)
 
 
 
 
-
-interface.launch(debug=True)
 
